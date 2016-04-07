@@ -1,5 +1,4 @@
 var Wakeup = require('wakeup');
-var timeline = require('timeline');
 
 var tempUnit;
 
@@ -7,7 +6,7 @@ var tempUnit;
 var location = '29708';
 var weatherKey = '3b410becc013d20c';
 var url = 'http://api.wunderground.com/api/' + weatherKey + '/conditions/forecast/hourly/q/' + location + '.json';
-/*
+
 var sendError = function() {
     Pebble.sendAppMessage({'KEY_ERROR': true},
         function(e) {
@@ -66,7 +65,7 @@ function timelineRequest(pin, type, topics, apiKey, callback) {
     console.log('timeline: request sent.');
   }, function(error) { console.log('timeline: error getting timeline token: ' + error); });
 }
-*/
+
 
 var wu_iconToId = {
     'unknown': 0,
@@ -155,6 +154,8 @@ var wu_IconToTiny = {
 };
 
 
+console.log(url);
+
 xhrRequest(url, 'GET', function(responseText) {
   try {
     var resp = JSON.parse(responseText);
@@ -177,15 +178,20 @@ xhrRequest(url, 'GET', function(responseText) {
     var feelslike = Math.round(feelslike_f);
     var wind = resp.current_observation.wind_string;
     var precip = resp.current_observation.precip_today_string;
+    
     var date = new Date();
-    date.setHours(date.getHours());         
+    date.setHours(date.getHours());      
+    
     var tinyIcon = wu_IconToTiny[icon];
     var backgroundcolor = "#FFAA55";
+    
     tempUnit = 'F';        
+    
     var headings = ["Forecast", "Powered by"];
     var current = 'Hi/Lo: ' + max + '°/' + min + '°\nFeels like: ' + feelslike + '°' + '\nDewpoint: ' + dewpoint + '°' + '\n\nWind: ' + wind + '\n\nPrecip: ' + precip;
     var paragraphs = [desc,"Weather Underground"];
     var forecast_text =   'Hi/Lo: ' + max + '°/' + min + '° Feels like: ' + feelslike + '°' + ' Dewpoint: ' + dewpoint + '°' + ' Wind: ' + wind;
+    
     var year = date.getFullYear();
     var month = date.getMonth();
     var today = date.getDate();
@@ -205,6 +211,16 @@ xhrRequest(url, 'GET', function(responseText) {
     console.log ('precip ' + precip);
     console.log ('location ' + city);
     //sendData(temp, max, min, condition, desc);
+    
+    
+    var pinID = 'weather-pin-';
+    pinID = pinID + year + month + today + hours;
+    console.log("pinID = " + pinID);
+    
+    
+    
+    
+    
 
   } catch(ex) {
     console.log(ex.stack);  
@@ -213,4 +229,6 @@ xhrRequest(url, 'GET', function(responseText) {
 
 
   }
+  
+  
 });
