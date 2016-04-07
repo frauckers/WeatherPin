@@ -7,7 +7,7 @@
     "companyName": "nick.livingston@mac.com",
     "longName": "WeatherPin",
     "projectType": "pebblejs",
-    enableMultiJS: true,
+    "enableMultiJS": true,
     "resources": {
         "media": [
             {
