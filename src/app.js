@@ -66,6 +66,10 @@ function timelineRequest(pin, type, topics, apiKey, callback) {
   }, function(error) { console.log('timeline: error getting timeline token: ' + error); });
 }
 
+function insertUserPin(pin, callback) {
+  timelineRequest(pin, 'PUT', null, null, callback);
+}
+
 
 var wu_iconToId = {
     'unknown': 0,
@@ -217,6 +221,32 @@ xhrRequest(url, 'GET', function(responseText) {
     pinID = pinID + year + month + today + hours;
     console.log("pinID = " + pinID);
     
+    // Create the pin  
+    var pin = {
+      "id" : pinID,
+      "time": date.toISOString(),
+      "layout": {
+        "type": "weatherPin",
+        "title": resp.current_observation.weather,
+        "backgroundColor": backgroundcolor,
+        //"subtitle" : max + '/' + min,
+        "subtitle": temp + '°',
+        "locationName": city,
+        //"tinyIcon": "system://images/TIMELINE_WEATHER",
+        "tinyIcon": tinyIcon,
+        //"body": 'Temp: ' + temp + '°' + tempUnit + '\n Feels like: ' + feelslike + '°' + tempUnit + '\n Wind: ' + wind + '\n Dewpoint: ' + dewpoint + tempUnit + '\n\n Today\'s Forecast: \n' + desc   
+        //"body": 'Hi/Lo: ' + max + '°/' + min + '°\nFeels like: ' + feelslike + '°' + '\nDewpoint: ' + dewpoint + '°' + '\n\nWind: ' + wind + '\n\nPrecip:' + precip + '\n\nForecast: \n' + desc + '\n\n' + 'Weather Data provided:\nby Weather Underground \n\n'
+        "body":current,
+        "headings": headings,
+        "paragraphs": paragraphs
+      }
+    };    
+    
+    console.log('Inserting pin #1 ' + JSON.stringify(pin));
+    
+    insertUserPin(pin, function(responseText){
+      console.log('Result: ' + responseText);
+    });
     
     
     
