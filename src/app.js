@@ -1,22 +1,13 @@
 var Wakeup = require('wakeup');
+var timeline = require('timeline');
 
 var tempUnit;
-/*var UI = require('ui');
-
-// Create a Card with title and subtitle
-var card = new UI.Card({
-  title:'Weather',
-  subtitle:'Fetching...'
-});
-
-// Display the Card
-card.show();*/
 
 // Construct URL
 var location = '29708';
 var weatherKey = '3b410becc013d20c';
 var url = 'http://api.wunderground.com/api/' + weatherKey + '/conditions/forecast/hourly/q/' + location + '.json';
-
+/*
 var sendError = function() {
     Pebble.sendAppMessage({'KEY_ERROR': true},
         function(e) {
@@ -44,6 +35,7 @@ var xhrRequest = function (url, type, callback) {
 };
 
 var API_URL_ROOT = 'https://timeline-api.getpebble.com/';
+
 
 function timelineRequest(pin, type, topics, apiKey, callback) {
   // User or shared?
@@ -74,6 +66,7 @@ function timelineRequest(pin, type, topics, apiKey, callback) {
     console.log('timeline: request sent.');
   }, function(error) { console.log('timeline: error getting timeline token: ' + error); });
 }
+*/
 
 var wu_iconToId = {
     'unknown': 0,
