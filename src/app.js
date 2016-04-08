@@ -195,6 +195,7 @@ xhrRequest(url, 'GET', function(responseText) {
     var current = 'Hi/Lo: ' + max + '°/' + min + '°\nFeels like: ' + feelslike + '°' + '\nDewpoint: ' + dewpoint + '°' + '\n\nWind: ' + wind + '\n\nPrecip: ' + precip;
     var paragraphs = [desc,"Weather Underground"];
     var forecast_text =   'Hi/Lo: ' + max + '°/' + min + '° Feels like: ' + feelslike + '°' + ' Dewpoint: ' + dewpoint + '°' + ' Wind: ' + wind;
+    var title_text = resp.current_observation.weather;
     
     var year = date.getFullYear();
     var month = date.getMonth();
@@ -214,11 +215,15 @@ xhrRequest(url, 'GET', function(responseText) {
     console.log ('wind ' + wind);
     console.log ('precip ' + precip);
     console.log ('location ' + city);
+    console.log ('year ' + year);
+    console.log ('month ' + month);
+    console.log ('today ' + today);
+    console.log ('hours ' + hours);
     //sendData(temp, max, min, condition, desc);
     
     
     var pinID = 'weather-pin-';
-    pinID = pinID + year + month + today + hours;
+    pinID = pinID + year + month + today + hours + minutes;
     console.log("pinID = " + pinID);
     
     // Create the pin  
@@ -227,20 +232,17 @@ xhrRequest(url, 'GET', function(responseText) {
       "time": date.toISOString(),
       "layout": {
         "type": "weatherPin",
-        "title": resp.current_observation.weather,
+        "title": title_text,
         "backgroundColor": backgroundcolor,
-        //"subtitle" : max + '/' + min,
         "subtitle": temp + '°',
         "locationName": city,
-        //"tinyIcon": "system://images/TIMELINE_WEATHER",
         "tinyIcon": tinyIcon,
-        //"body": 'Temp: ' + temp + '°' + tempUnit + '\n Feels like: ' + feelslike + '°' + tempUnit + '\n Wind: ' + wind + '\n Dewpoint: ' + dewpoint + tempUnit + '\n\n Today\'s Forecast: \n' + desc   
-        //"body": 'Hi/Lo: ' + max + '°/' + min + '°\nFeels like: ' + feelslike + '°' + '\nDewpoint: ' + dewpoint + '°' + '\n\nWind: ' + wind + '\n\nPrecip:' + precip + '\n\nForecast: \n' + desc + '\n\n' + 'Weather Data provided:\nby Weather Underground \n\n'
-        "body":current,
+        "body": current,
         "headings": headings,
         "paragraphs": paragraphs
       }
-    };    
+    };   
+    
     
     console.log('Inserting pin #1 ' + JSON.stringify(pin));
     
