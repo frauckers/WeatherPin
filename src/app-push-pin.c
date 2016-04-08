@@ -30,7 +30,7 @@ static void init() {
   s_main_window = window_create();
   window_set_background_color(s_main_window, GColorFolly);
   window_set_window_handlers(s_main_window, (WindowHandlers) {
-    .load = window_load,
+    .load = window_load, 
     .unload = window_unload,
   });
   window_stack_push(s_main_window, true);
