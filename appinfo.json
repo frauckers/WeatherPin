@@ -6,7 +6,6 @@
     ],
     "companyName": "nick.livingston@mac.com",
     "longName": "WeatherPin",
-    "enableMultiJS": true,
     "projectType": "pebblejs",
     "resources": {
         "media": [
@@ -37,8 +36,7 @@
     "shortName": "WeatherPin",
     "targetPlatforms": [
         "aplite",
-        "basalt",
-        "chalk"
+        "basalt"
     ],
     "uuid": "7c80dfbc-aad2-4d24-b106-414c863c373a",
     "versionCode": 1,
