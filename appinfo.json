@@ -1,49 +1,20 @@
 {
-    "appKeys": {},
-    "capabilities": [
-        "location",
-        "configurable"
-    ],
-    "companyName": "nick.livingston@mac.com",
-    "longName": "WeatherPin",
-    "projectType": "pebblejs",
-    "resources": {
-        "media": [
-            {
-                "file": "images/menu_icon.png",
-                "menuIcon": true,
-                "name": "IMAGE_MENU_ICON",
-                "type": "bitmap"
-            },
-            {
-                "file": "images/logo_splash.png",
-                "name": "IMAGE_LOGO_SPLASH",
-                "type": "bitmap"
-            },
-            {
-                "file": "images/tile_splash.png",
-                "name": "IMAGE_TILE_SPLASH",
-                "type": "bitmap"
-            },
-            {
-                "file": "fonts/UbuntuMono-Regular.ttf",
-                "name": "MONO_FONT_14",
-                "type": "font"
-            }
-        ]
-    },
-    "sdkVersion": "3",
-    "shortName": "WeatherPin",
-    "targetPlatforms": [
-        "aplite",
-        "basalt",
-        "chalk"
-    ],
-    "uuid": "7c80dfbc-aad2-4d24-b106-414c863c373a",
-    "versionCode": 1,
-    "versionLabel": "1.0",
-    "watchapp": {
-        "hiddenApp": false,
-        "watchface": false
-    }
+  "uuid": "7c80dfbc-aad2-4d24-b106-414c863c373a",
+  "shortName": "WeatherPin",
+  "longName": "WeatherPin",
+  "companyName": "nick.livingston@mac.com",
+  "versionCode": 1,
+  "versionLabel": "1.0",
+  "sdkVersion": "3",
+  "targetPlatforms": ["aplite", "basalt", "chalk"],
+  "watchapp": {
+    "watchface": false
+  },
+  "appKeys": {
+    "dummy": 0
+  },
+  "resources": {
+    "media": []
+  },
+  "enableMultiJS": true
 }
