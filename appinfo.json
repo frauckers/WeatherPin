@@ -36,7 +36,8 @@
     "shortName": "WeatherPin",
     "targetPlatforms": [
         "aplite",
-        "basalt"
+        "basalt",
+        "chalk"
     ],
     "uuid": "7c80dfbc-aad2-4d24-b106-414c863c373a",
     "versionCode": 1,
